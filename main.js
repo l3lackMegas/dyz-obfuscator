@@ -6,7 +6,7 @@ import program from 'commander'
 import path from 'path'
 import fse from 'fs-extra'
 import readline from 'readline';
-
+import logUpdate from 'log-update';
 
 import {
 	getExtension,
@@ -75,8 +75,12 @@ const main = async () => {
 				displayCopypath = path.posix.join(destPath, copypath).replace(/\\/g, '/'),
 				desPath = path.posix.join(cwd, destPath, copypath).replace(/\\/g, '/');
 
-			process.stdout.write(`[${index+1}/${filesAll.length}] Copying file to ${displayCopypath}`);
-			await sleep(100)
+			let terminalOut = `[${index+1}/${filesAll.length}] Copying file to ${displayCopypath}`
+			logUpdate(terminalOut.length > process.stdout.columns ?
+				terminalOut.substring(0, process.stdout.columns - 13) + '...' + terminalOut.substring(terminalOut.length - 10, terminalOut.length)
+				: terminalOut
+			);
+			//await sleep(100)
 			
 			if(WhiteListExtension.includes(getExtension(pathname))) taskList.push(pathname);
 			//console.log(desPath)
@@ -106,8 +110,13 @@ const main = async () => {
 			let stringSource = fse.readFileSync(pathname, 'utf8');
 
 			let obfuscatedOutput = "";
-			process.stdout.write(`[${index+1}/${taskList.length}] Obfuscating to ${displayCopypath}`);
-			await sleep(100)
+
+			//process.stdout.write(`[${index+1}/${taskList.length}] Obfuscating to ${displayCopypath}`.substring(0, process.stdout.columns - 3) + '...');
+			let terminalOut = `[${index+1}/${taskList.length}] Copying file to ${displayCopypath}`
+			logUpdate(terminalOut.length > process.stdout.columns ?
+				terminalOut.substring(0, process.stdout.columns - 13) + '...' + terminalOut.substring(terminalOut.length - 10, terminalOut.length)
+				: terminalOut
+			);
 			// Wipe line for next status
 
 			switch (getExtension(pathname).toLowerCase()) {
