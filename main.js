@@ -10,11 +10,11 @@ import {spawn, exec} from 'child_process';
 
 import AutoGitUpdate, { readAppVersion } from './updateor.js';
 
-// const log = logUpdate.create(process.stdout, {
-//     showCursor: true
-// });
+const log = logUpdate.create(process.stdout, {
+    showCursor: true
+});
 
-const log = (s)=>console.log(s);
+// const log = (s)=>console.log(s);
 
 import {
 	getExtension,
@@ -183,7 +183,9 @@ if(!updateInfo.upToDate) {
 	console.log("[!] The script has been updated!")
 	console.log("[!] Start script on new shell...")
 	await (new Promise(function(resolve, reject) {
-        let command = spawn("dobs", process.argv);
+        let command = spawn("dobs", process.argv, {
+			shell: true
+		});
 		var result = '';
 		command.stdout.on('data', function(data) {
 			result += data;
