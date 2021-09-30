@@ -5,8 +5,6 @@ import path from 'path'
 import fse from 'fs-extra'
 //import readline from 'readline';
 import logUpdate from 'log-update';
-import { fileURLToPath } from 'url';
-import pjson from './package.json';
 
 
 import AutoGitUpdate from './updateor.js';
@@ -28,7 +26,7 @@ import {
 } from './lib/index.js'
 
 program
-	.version(pjson.version)
+	.version(process.env.npm_package_version)
 	.name('dobs')
 	.description('An image resizer to make thumbnails')
 	.option('-s,--source [folder]', 'Source images directory', './')
