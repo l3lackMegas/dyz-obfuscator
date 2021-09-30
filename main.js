@@ -179,10 +179,13 @@ if(!updateInfo.upToDate) {
 	await updater.forceUpdate();
 	console.log("[!] The script has been updated!")
 	console.log("[!] Start script on new shell...")
-	spawn("dobs", process.argv, {
-		shell: true,
-		detached: true
-	});
+	await (new Promise(function(resolve, reject) {
+        spawn("dobs", process.argv, {
+			shell: true,
+			detached: true
+		});
+        setTimeout(resolve, 1000);
+    }));
 	process.exit();
 } else {
 	main()
