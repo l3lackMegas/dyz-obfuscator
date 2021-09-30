@@ -159,7 +159,7 @@ const updater = new AutoGitUpdate({
     repository: 'https://github.com/l3lackMegas/dyz-obfuscator',
 	branch: "main",
     tempLocation: "C:\\tmp",
-    executeOnComplete: 'npm link',
+    executeOnComplete: 'npm i && npm link && dobs',
     exitOnComplete: true
 });
 
@@ -177,13 +177,7 @@ if(!updateInfo.upToDate) {
 	})
 	await updater.forceUpdate();
 	console.log("[!] The script has been updated!")
-	console.log("[!] Restart script...")
-	process.on("exit", function () {
-		require("child_process").spawn(process.argv.shift(), process.argv, {
-			cwd: process.cwd(),
-			shell: true
-		});
-	});
+	console.log("[!] Start script on new shell...")
 	process.exit();
 } else {
 	main()
