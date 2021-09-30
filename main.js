@@ -190,6 +190,11 @@ if(!updateInfo.upToDate) {
 			result += data;
 			process.stdout.write(data.toString());
 		});
+
+		command.stderr.on('data', function(data) {
+			result += data;
+			process.stdout.write(data.toString());
+		});
 		command.on('close', function(code) {
 			//console.log(result)
 			resolve()
