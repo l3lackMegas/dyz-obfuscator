@@ -5,7 +5,7 @@ import path from 'path'
 import fse from 'fs-extra'
 //import readline from 'readline';
 import logUpdate from 'log-update';
-
+import { fileURLToPath } from 'url';
 import {spawn, exec} from 'child_process';
 
 import AutoGitUpdate, { readAppVersion } from './updateor.js';
@@ -165,7 +165,7 @@ const updater = new AutoGitUpdate({
     repository: 'https://github.com/l3lackMegas/dyz-obfuscator',
 	branch: "main",
     tempLocation: "C:\\tmp",
-    executeOnComplete: 'npm i && npm link --force',
+    executeOnComplete: `C: && cd ${path.dirname(fileURLToPath(import.meta.url))} && npm i --force && npm link --force`,
     exitOnComplete: false
 });
 
