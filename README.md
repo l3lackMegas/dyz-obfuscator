@@ -47,3 +47,5 @@ dobs --source /path/to/source --output /path/to/output
 - "javascript-obfuscator": "^2.19.0"
 - "readline": "^1.3.0",
 - "rimraf": "^3.0.2"
+
+Thank to [auto-git-update](https://github.com/chegele/AutoGitUpdate) for auto-update
