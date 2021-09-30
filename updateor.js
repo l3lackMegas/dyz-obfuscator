@@ -224,7 +224,7 @@ async function installUpdate() {
 /**
  * Reads the applications version from the package.json file.
  */
-function readAppVersion() {
+export function readAppVersion() {
     let file = path.join(appRootPath.path, 'package.json');
     log.detail('Auto Git Update - Reading app version from ' + file);
     let appPackage = fs.readFileSync(file);

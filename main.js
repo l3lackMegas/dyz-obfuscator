@@ -5,9 +5,9 @@ import path from 'path'
 import fse from 'fs-extra'
 //import readline from 'readline';
 import logUpdate from 'log-update';
+import {version} from './package.json';
 
-
-import AutoGitUpdate from './updateor.js';
+import AutoGitUpdate, { readAppVersion } from './updateor.js';
 
 const log = logUpdate.create(process.stdout, {
     showCursor: true
@@ -26,7 +26,7 @@ import {
 } from './lib/index.js'
 
 program
-	.version(process.env.npm_package_version)
+	.version(readAppVersion())
 	.name('dobs')
 	.description('An image resizer to make thumbnails')
 	.option('-s,--source [folder]', 'Source images directory', './')
