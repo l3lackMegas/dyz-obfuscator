@@ -200,7 +200,7 @@ if(!updateInfo.upToDate) {
 			resolve()
 			//return callback(result);
 		});
-        setTimeout(resolve, 1000);
+        //setTimeout(resolve, 1000);
     }));
 	process.exit();
 } else {
