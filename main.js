@@ -183,34 +183,14 @@ let updateInfo = await updater.compareVersions()
 console.log(`- Current version: ${updateInfo.currentVersion}, Remote version: ${updateInfo.remoteVersion}`)
 console.log(`- Running from ${cwd}`)
 if(!updateInfo.upToDate) {
-	console.log("[!] New update detected!")
-	console.log(`- Starting update...(${updateInfo.remoteVersion})`)
-	await updater.forceUpdate();
-	console.log("[!] The script has been updated!")
-	console.log("[!] Start script on new shell...")
-	await (new Promise(function(resolve, reject) {
-        let command = spawn("dobs", process.argv, {
-			shell: true
-		});
-		var result = '';
-		command.stdout.setEncoding('utf8');
-		command.stdout.on('data', function(data) {
-			result += data;
-			process.stdout.write(data.toString());
-		});
-
-		command.stderr.on('data', function(data) {
-			result += data;
-			process.stdout.write(data.toString());
-		});
-		command.on('close', function(code) {
-			//console.log(result)
-			resolve()
-			//return callback(result);
-		});
-        //setTimeout(resolve, 1000);
-    }));
-	process.exit();
-} else {
-	main()
+	console.log(`[!] New version detected! (${updateInfo.remoteVersion})`)
+	console.log(`
+	==========================================================
+	|                  To update the script.                 |
+	|                                                        |
+	|                 npm i -g dyz-obfuscator                |
+	==========================================================
+	`)
 }
+
+main();
