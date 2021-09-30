@@ -169,7 +169,7 @@ updater.setLogConfig({
 
 let updateInfo = await updater.compareVersions()
 
-if(!updateInfo.upToDate) {
+if(updateInfo.upToDate) {
 	console.log("[!] New update detected!")
 	updater.setLogConfig({
 		logGeneral: true
