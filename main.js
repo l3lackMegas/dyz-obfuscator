@@ -180,11 +180,7 @@ if(!updateInfo.upToDate) {
 	console.log("[!] The script has been updated!")
 	console.log("[!] Start script on new shell...")
 	await (new Promise(function(resolve, reject) {
-        let child = spawn("dobs", process.argv, {
-			shell: true,
-			detached: true,
-			stdio: "inherit"
-		});
+        let child = spawn("dobs", process.argv);
 
 		let scriptOutput = "";
 
