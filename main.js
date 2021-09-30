@@ -183,7 +183,7 @@ console.log(`Current version: ${updateInfo.currentVersion}, Remote version: ${up
 console.log(`Running from ${cwd}`)
 if(!updateInfo.upToDate) {
 	console.log("[!] New update detected!")
-	console.log(`Starting update...(${updateInfo.remoteVersion})`)
+	console.log(`- Starting update...(${updateInfo.remoteVersion})`)
 	await updater.forceUpdate();
 	console.log("[!] The script has been updated!")
 	console.log("[!] Start script on new shell...")
