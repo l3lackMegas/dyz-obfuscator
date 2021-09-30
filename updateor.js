@@ -101,9 +101,13 @@ export default class AutoGitUpdate {
     async forceUpdate() {
         try {
             log.general('Auto Git Update - Updating application from ' + config.repository);
+            console.log("Downloading package...")
             await downloadUpdate();
+            console.log("Backup current version...")
             await backupApp();
+            console.log("Installing update...")
             await installUpdate();
+            console.log("Installing dependencies...")
             await installDependencies();
             log.general('Auto Git Update - Finished installing updated version.');
             if (config.executeOnComplete) await promiseBlindExecute(config.executeOnComplete);
