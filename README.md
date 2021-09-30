@@ -23,6 +23,14 @@ npm link
  dobs [option]
  ```
  
+ ## Example
+ ```bash
+dobs -s "/path/to/source" -o "/path/to/output"
+```
+```bash
+dobs --source /path/to/source --output /path/to/output
+```
+ 
  Options:
  ```
  -V, --version         output the version number
