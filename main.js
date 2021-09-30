@@ -72,9 +72,10 @@ const main = async () => {
 			//console.log(stringSource)
 			let sPath = path.posix.join(cwd, srcPath).replace(/\\/g, '/')
 			let copypath = fullPathname.replace(sPath, ""),
+				displayCopypath = path.posix.join(destPath, copypath).replace(/\\/g, '/'),
 				desPath = path.posix.join(cwd, destPath, copypath).replace(/\\/g, '/');
 
-			process.stdout.write(`[${index+1}/${filesAll.length}] Copying file to ${desPath}`);
+			process.stdout.write(`[${index+1}/${filesAll.length}] Copying file to ${displayCopypath}`);
 			await sleep(100)
 			
 			if(WhiteListExtension.includes(getExtension(pathname))) taskList.push(pathname);
@@ -97,6 +98,7 @@ const main = async () => {
 			//console.log(stringSource)
 			let sPath = path.posix.join(cwd, srcPath).replace(/\\/g, '/')
 			let copypath = fullPathname.replace(sPath, ""),
+				displayCopypath = path.posix.join(destPath, copypath).replace(/\\/g, '/'),
 				desPath = path.posix.join(cwd, destPath, copypath).replace(/\\/g, '/');
 			//console.log(desPath)
 			
@@ -104,7 +106,7 @@ const main = async () => {
 			let stringSource = fse.readFileSync(pathname, 'utf8');
 
 			let obfuscatedOutput = "";
-			process.stdout.write(`[${index+1}/${taskList.length}] Obfuscating to ${desPath}`);
+			process.stdout.write(`[${index+1}/${taskList.length}] Obfuscating to ${displayCopypath}`);
 			await sleep(100)
 			// Wipe line for next status
 
