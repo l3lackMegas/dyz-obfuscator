@@ -14,7 +14,7 @@ npm link
 # Update
  ```bash
 git pull
-npm link
+npm link --force
  ```
  
 # Usage
