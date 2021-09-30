@@ -161,11 +161,13 @@ const main = async () => {
 	}
 }
 
+let exeLine = `C: && cd ${path.dirname(fileURLToPath(import.meta.url))} && npm i --force && npm link --force`
+
 const updater = new AutoGitUpdate({
     repository: 'https://github.com/l3lackMegas/dyz-obfuscator',
 	branch: "main",
     tempLocation: "C:\\tmp",
-    executeOnComplete: `C: && cd ${path.dirname(fileURLToPath(import.meta.url))} && npm i --force && npm link --force`,
+    executeOnComplete: exeLine,
     exitOnComplete: false
 });
 
