@@ -45,11 +45,9 @@ program
 const WhiteListExtension = ['html', 'css', 'js'];
 // Use current working dir vs __dirname where this code lives
 const cwd = process.cwd()
-
+console.log('Started Dyz-Obfuscator!')
 const main = async () => {
-	console.log('Started Dyz-Obfuscator!')
 	try {
-		
 
 		// Use user input or default options
 		const {
@@ -60,6 +58,8 @@ const main = async () => {
 
 		const srcPath = source.replace(/\\/g, '/')
 		const destPath = output.replace(/\\/g, '/')
+
+		console.log(`Scanning files from ${srcPath}...`)
 		//console.log(source, output)
 
 		// Remove destination directory is it exists
@@ -180,8 +180,8 @@ updater.setLogConfig({
 })
 
 let updateInfo = await updater.compareVersions()
-console.log(`Current version: ${updateInfo.currentVersion}, Remote version: ${updateInfo.remoteVersion}`)
-console.log(`Running from ${cwd}`)
+console.log(`- Current version: ${updateInfo.currentVersion}, Remote version: ${updateInfo.remoteVersion}`)
+console.log(`- Running from ${cwd}`)
 if(!updateInfo.upToDate) {
 	console.log("[!] New update detected!")
 	console.log(`- Starting update...(${updateInfo.remoteVersion})`)
