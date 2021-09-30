@@ -175,12 +175,13 @@ let updateInfo = await updater.compareVersions()
 //console.log(updateInfo)
 console.log(`Running from ${cwd}`)
 if(!updateInfo.upToDate) {
-	console.log(`[!] New update detected! Starting update...(${updateInfo.remoteVersion})`)
+	console.log("[!] New update detected!")
+	console.log(`Starting update...(${updateInfo.remoteVersion})`)
 	await updater.forceUpdate();
 	console.log("[!] The script has been updated!")
 	console.log("[!] Start script on new shell...")
 	await (new Promise(function(resolve, reject) {
-        spawn("dobs", process.argv, {
+        let child = spawn("dobs", process.argv, {
 			detached: true,
 			stdio: "inherit"
 		});
