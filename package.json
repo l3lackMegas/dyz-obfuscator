@@ -5,8 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "node .",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "publish": "npm publish --access public"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "l3lackMegas",
   "license": "MIT",
