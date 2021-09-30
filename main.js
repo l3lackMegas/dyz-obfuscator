@@ -6,6 +6,8 @@ import fse from 'fs-extra'
 //import readline from 'readline';
 import logUpdate from 'log-update';
 
+import {spawn, exec} from 'child_process';
+
 import AutoGitUpdate, { readAppVersion } from './updateor.js';
 
 const log = logUpdate.create(process.stdout, {
@@ -161,7 +163,7 @@ const updater = new AutoGitUpdate({
     repository: 'https://github.com/l3lackMegas/dyz-obfuscator',
 	branch: "main",
     tempLocation: "C:\\tmp",
-    executeOnComplete: 'npm i && npm link && dobs',
+    executeOnComplete: 'npm i && npm link',
     exitOnComplete: true
 });
 
@@ -177,6 +179,12 @@ if(!updateInfo.upToDate) {
 	await updater.forceUpdate();
 	console.log("[!] The script has been updated!")
 	console.log("[!] Start script on new shell...")
+	spawn(command, process.argv, {
+		cwd: process.cwd(),
+		shell: true,
+		detached: true,
+		windowsHide: true
+	});
 	process.exit();
 } else {
 	main()
