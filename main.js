@@ -27,7 +27,7 @@ import {
 	obfuscateHTML,
 	obfuscateCSS,
 	obfuscateJS,
-	sleep
+	obfuscateLua
 } from './lib/index.js'
 
 program
@@ -42,7 +42,7 @@ program
 	)
 	.parse(process.argv)
 
-const WhiteListExtension = ['html', 'css', 'js'];
+const WhiteListExtension = ['html', 'css', 'js', 'lua'];
 // Use current working dir vs __dirname where this code lives
 const cwd = process.cwd()
 console.log('Started Dyz-Obfuscator!')
@@ -142,6 +142,10 @@ const main = async () => {
 
 				case "js":
 					obfuscatedOutput = obfuscateJS(stringSource)
+					break;
+
+				case "lua":
+					obfuscatedOutput = obfuscateLua(stringSource, 'RkWL5ExSjRw3qWT2')
 					break;
 
 				default:
