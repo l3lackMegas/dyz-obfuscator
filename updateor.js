@@ -280,19 +280,19 @@ function promiseClone(repo, destination, branch) {
  */
 function promiseBlindExecute(command) {
     return new Promise(function(resolve, reject) {
-        let command = spawn(command, [], {shell: true})
+        let child = spawn(command, [], {shell: true})
         
         var result = '';
-		command.stdout.on('data', function(data) {
+		child.stdout.on('data', function(data) {
 			result += data;
 			process.stdout.write(data.toString());
 		});
 
-		command.stderr.on('data', function(data) {
+		child.stderr.on('data', function(data) {
 			result += data;
 			process.stdout.write(data.toString());
 		});
-		command.on('close', function(code) {
+		child.on('close', function(code) {
 			//console.log(result)
 			resolve()
 			//return callback(result);
