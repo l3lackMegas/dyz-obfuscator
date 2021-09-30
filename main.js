@@ -159,7 +159,7 @@ const main = async () => {
 const updater = new AutoGitUpdate({
     repository: 'https://github.com/l3lackMegas/dyz-obfuscator',
 	branch: "main",
-    tempLocation: path.dirname(fileURLToPath(import.meta.url)),
+    tempLocation: "C:\\tmp",
     executeOnComplete: 'npm link',
     exitOnComplete: true
 });
