@@ -8,7 +8,9 @@ import Logger from 'chegs-simple-logger';
 
 import { fileURLToPath } from 'url';
 
-const appRootPath = path.dirname(fileURLToPath(import.meta.url));
+const appRootPath = {
+    path: path.dirname(fileURLToPath(import.meta.url))
+}
 
 /** 
  * @typedef Config - Configuration for Auto Git Update
