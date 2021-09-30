@@ -183,8 +183,8 @@ let updateInfo = await updater.compareVersions()
 console.log(`- Running from ${cwd}`)
 console.log(`- Current version: ${updateInfo.currentVersion}, Remote version: ${updateInfo.remoteVersion}`)
 if(!updateInfo.upToDate) {
-	console.log(`[!] New version detected! (${updateInfo.remoteVersion})`)
 	console.log(`
+[!] New version detected! (${updateInfo.remoteVersion})
 	==========================================================
 	|                  To update the script.                 |
 	|                                                        |
