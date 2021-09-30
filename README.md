@@ -1,17 +1,24 @@
 # dyz-obfuscator
- The HTML, CSS and JS obfuscator script.
- 
- Sorry, if this repo might be looks messy. I don't have time to clean up the code.
+The HTML, CSS and JS obfuscator script.
+
+Sorry, if this repo might be looks messy. I don't have time to clean up the code.
 
 # Installation
+```bash
+git clone https://github.com/l3lackMegas/dyz-obfuscator.git
+cd ./dyz-obfuscator
+npm install
+npm link
+```
+
+# Update
  ```bash
- git clone https://github.com/l3lackMegas/dyz-obfuscator.git
- cd ./dyz-obfuscator
- npm install
- npm link
+git pull
+npm unlink
+npm link
  ```
  
- # Usage
+# Usage
  ```bash
  dobs [option]
  ```
@@ -24,7 +31,7 @@
  -h, --help            display help for command
  ```
   
- # Dependencies
+# Dependencies
 - "clean-css": "^5.2.0",
 - "css": "^3.0.0",
 - "fs-extra": "^10.0.0",
