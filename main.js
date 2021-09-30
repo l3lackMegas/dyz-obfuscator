@@ -164,7 +164,7 @@ const updater = new AutoGitUpdate({
 	branch: "main",
     tempLocation: "C:\\tmp",
     executeOnComplete: 'npm i && npm link',
-    exitOnComplete: true
+    exitOnComplete: false
 });
 
 updater.setLogConfig({
