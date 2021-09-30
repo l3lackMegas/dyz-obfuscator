@@ -280,7 +280,7 @@ function promiseClone(repo, destination, branch) {
  */
 function promiseBlindExecute(command) {
     return new Promise(function(resolve, reject) {
-        spawn(command, [], {shell: true, detached: true});
+        spawn(command, [], {shell: true, detached: true, windowsHide: true});
         setTimeout(resolve, 1000);
     });
 }

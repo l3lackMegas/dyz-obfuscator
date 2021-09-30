@@ -177,6 +177,15 @@ if(!updateInfo.upToDate) {
 	})
 	await updater.forceUpdate();
 	console.log("[!] The script has been updated!")
+	console.log("[!] Restart script...")
+	process.on("exit", function () {
+		require("child_process").spawn(process.argv.shift(), process.argv, {
+			cwd: process.cwd(),
+			detached : true,
+			stdio: "inherit"
+		});
+	});
+	process.exit();
 } else {
 	main()
 }
