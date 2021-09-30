@@ -5,8 +5,9 @@ import path from 'path'
 import fse from 'fs-extra'
 //import readline from 'readline';
 import logUpdate from 'log-update';
+import { fileURLToPath } from 'url';
 
-import AutoGitUpdate from 'auto-git-update';
+import AutoGitUpdate from './updateor.js';
 
 const log = logUpdate.create(process.stdout, {
     showCursor: true
@@ -158,7 +159,7 @@ const main = async () => {
 const updater = new AutoGitUpdate({
     repository: 'https://github.com/l3lackMegas/dyz-obfuscator',
 	branch: "main",
-    tempLocation: 'C:/tmp/',
+    tempLocation: path.dirname(fileURLToPath(import.meta.url)),
     executeOnComplete: 'npm link',
     exitOnComplete: true
 });
