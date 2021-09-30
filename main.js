@@ -181,9 +181,19 @@ if(!updateInfo.upToDate) {
 	console.log("[!] The script has been updated!")
 	console.log("[!] Start script on new shell...")
 	await (new Promise(function(resolve, reject) {
-        spawn("dobs", process.argv, {
+        let command = spawn("dobs", process.argv, {
 			shell: true,
 			detached: true
+		});
+		var result = '';
+		command.stdout.on('data', function(data) {
+			result += data;
+			process.stdout.write(data.toString());
+		});
+		command.on('close', function(code) {
+			//console.log(result)
+			resolve()
+			//return callback(result);
 		});
         setTimeout(resolve, 1000);
     }));
