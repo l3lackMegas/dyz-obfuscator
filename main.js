@@ -180,8 +180,8 @@ updater.setLogConfig({
 })
 
 let updateInfo = await updater.compareVersions()
-console.log(`- Current version: ${updateInfo.currentVersion}, Remote version: ${updateInfo.remoteVersion}`)
 console.log(`- Running from ${cwd}`)
+console.log(`- Current version: ${updateInfo.currentVersion}, Remote version: ${updateInfo.remoteVersion}`)
 if(!updateInfo.upToDate) {
 	console.log(`[!] New version detected! (${updateInfo.remoteVersion})`)
 	console.log(`
