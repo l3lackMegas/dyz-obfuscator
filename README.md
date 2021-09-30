@@ -1,36 +1,27 @@
 # dyz-obfuscator
 The HTML, CSS and JS obfuscator script.
 
-Sorry, if this repo might be looks messy. I don't have time to clean up the code.
+`Sorry, if this repo might be looks messy. I don't have time to clean up the code.`
 
-# Installation
+# Installation & Update
 ```bash
-git clone https://github.com/l3lackMegas/dyz-obfuscator.git
-cd ./dyz-obfuscator
-npm install
-npm link
+npm i -g dyz-obfuscator
 ```
-
-# Update
- ```bash
-git pull
-npm link --force
- ```
  
 # Usage
- ```bash
- dobs [option]
- ```
+```bash
+dobs [option]
+```
  
- ## Example
- ```bash
+## Example:
+```bash
 dobs -s "/path/to/source" -o "/path/to/output"
 ```
 ```bash
 dobs --source /path/to/source --output /path/to/output
 ```
  
- Options:
+## Options
  ```
  -V, --version         output the version number
  -s,--source [folder]  Source images directory (default: "./")
@@ -39,13 +30,15 @@ dobs --source /path/to/source --output /path/to/output
  ```
   
 # Dependencies
-- "clean-css": "^5.2.0",
-- "css": "^3.0.0",
-- "fs-extra": "^10.0.0",
-- "globby": "^12.0.2",
-- "html-minifier": "^4.0.0",
+- "chegs-simple-logger": "^1.1.0"
+- "clean-css": "^5.2.0"
+- "css": "^3.0.0"
+- "fs-extra": "^10.0.0"
+- "globby": "^12.0.2"
+- "html-minifier": "^4.0.0"
 - "javascript-obfuscator": "^2.19.0"
-- "readline": "^1.3.0",
+- "log-update": "^4.0.0"
 - "rimraf": "^3.0.2"
+- "simple-git": "^1.131.0"
 
-Thank to [auto-git-update](https://github.com/chegele/AutoGitUpdate) for auto-update
+Thank to [chegele/AutoGitUpdate](https://github.com/chegele/AutoGitUpdate) for check version script !
