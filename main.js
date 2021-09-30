@@ -5,7 +5,6 @@ import path from 'path'
 import fse from 'fs-extra'
 //import readline from 'readline';
 import logUpdate from 'log-update';
-import {version} from './package.json';
 
 import AutoGitUpdate, { readAppVersion } from './updateor.js';
 
