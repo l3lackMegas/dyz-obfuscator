@@ -67,8 +67,12 @@ const main = async () => {
 		//filesAll.forEach(pathname => {
 		for (let index = 0; index < filesAll.length; index++) {
 			let pathname = filesAll[index];
-			let copypath = pathname.replace(srcPath, ""),
-				desPath = destPath + '/' + copypath;
+			let fullPathname = path.posix.join(cwd, pathname).replace(/\\/g, '/');
+			
+			//console.log(stringSource)
+			let sPath = path.posix.join(cwd, srcPath).replace(/\\/g, '/')
+			let copypath = fullPathname.replace(sPath, ""),
+				desPath = path.posix.join(cwd, destPath, copypath).replace(/\\/g, '/');
 
 			process.stdout.write(`[${index+1}/${filesAll.length}] Copying file to ${desPath}`);
 			await sleep(100)
@@ -88,9 +92,12 @@ const main = async () => {
 
 		for (let index = 0; index < taskList.length; index++) {
 			let pathname = taskList[index];
+			let fullPathname = path.posix.join(cwd, pathname).replace(/\\/g, '/');
+			
 			//console.log(stringSource)
-			let copypath = pathname.replace(srcPath, ""),
-				desPath = destPath + '/' + copypath;
+			let sPath = path.posix.join(cwd, srcPath).replace(/\\/g, '/')
+			let copypath = fullPathname.replace(sPath, ""),
+				desPath = path.posix.join(cwd, destPath, copypath).replace(/\\/g, '/');
 			//console.log(desPath)
 			
 			//console.log(pathname)
