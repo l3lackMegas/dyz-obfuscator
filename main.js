@@ -59,7 +59,7 @@ const main = async () => {
 		const srcPath = source.replace(/\\/g, '/')
 		const destPath = output.replace(/\\/g, '/')
 
-		console.log(`Scanning files from ${srcPath}...`)
+		console.log(`Scanning files from ${srcPath}`)
 		//console.log(source, output)
 
 		// Remove destination directory is it exists
