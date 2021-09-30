@@ -1,6 +1,6 @@
 {
   "name": "dyz-obfuscator",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "The HTML, CSS and JS obfuscator.",
   "main": "main.js",
   "scripts": {
