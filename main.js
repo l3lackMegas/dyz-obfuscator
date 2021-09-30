@@ -3,8 +3,10 @@
 import program from 'commander'
 import path from 'path'
 import fse from 'fs-extra'
-import readline from 'readline';
+//import readline from 'readline';
 import logUpdate from 'log-update';
+
+import AutoGitUpdate from 'auto-git-update';
 
 const log = logUpdate.create(process.stdout, {
     showCursor: true
@@ -153,4 +155,22 @@ const main = async () => {
 	}
 }
 
-main()
+const updater = new AutoGitUpdate({
+    repository: 'https://github.com/l3lackMegas/dyz-obfuscator',
+	branch: "main",
+    tempLocation: 'C:/tmp/',
+    executeOnComplete: 'npm link dep',
+    exitOnComplete: true
+});
+
+updater.setLogConfig({
+	logGeneral: false
+})
+
+if(await updater.compareVersions().upToDate) {
+	console.log("[!] New update detected!")
+	await updater.forceUpdate();
+	console.log("[!] The script has been updated!")
+} else {
+	main()
+}
