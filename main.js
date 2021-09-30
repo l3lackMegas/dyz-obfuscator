@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-console.log('Started Dyz-Obfuscator!')
-
 import program from 'commander'
 import path from 'path'
 import fse from 'fs-extra'
@@ -35,6 +33,7 @@ program
 const WhiteListExtension = ['html', 'css', 'js'];
 
 const main = async () => {
+	console.log('Started Dyz-Obfuscator!')
 	try {
 		// Use current working dir vs __dirname where this code lives
 		const cwd = process.cwd()
@@ -87,9 +86,10 @@ const main = async () => {
 
 			fse.copySync(pathname, desPath)
 			//console.log('Copied to ' + desPath)
-			readline.clearLine(process.stdout);
-			readline.cursorTo(process.stdout, 0);
+			// readline.clearLine(process.stdout);
+			// readline.cursorTo(process.stdout, 0);
 		};
+		logUpdate('')
 		//console.log(taskList, `Found ${taskList.length} items.`, srcPath)
 		console.log("[!] Finish copied files!")
 
@@ -137,12 +137,12 @@ const main = async () => {
 			}
 			//fse.removeSync(desPath)
 			fse.writeFileSync(desPath, obfuscatedOutput, { flag: 'w' })
-			readline.clearLine(process.stdout);
-			readline.cursorTo(process.stdout, 0);
+			// readline.clearLine(process.stdout);
+			// readline.cursorTo(process.stdout, 0);
 			// fse.copySync(pathname, desPath)
 			// console.log('Copied to ' + desPath)
 		};
-
+		logUpdate('')
 		console.log('[!] Obfuscated files successfully!\n')
 
 		console.log(`All Files has been created at ${path.join(cwd, destPath)}`)
