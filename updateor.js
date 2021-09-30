@@ -241,12 +241,14 @@ export function readAppVersion() {
 async function readRemoteVersion() {
     // Generate request details
     let options = {
-        "Cache-Control": "private, no-cache, no-store, must-revalidate, max-age=0",
-        Pragma: "no-cache"
     }
     let url = config.repository + `/${config.branch}/package.json?dt=${Date.now()}`;
     if (url.includes('github')) url = url.replace('github.com', 'raw.githubusercontent.com');
-    if (config.token) options.headers = {Authorization: `token ${config.token}`}
+    if (config.token) options.headers = {
+        Authorization: `token ${config.token}`,
+        "Cache-Control": "private, no-cache, no-store, must-revalidate, max-age=0",
+        Pragma: "no-cache"
+    }
     log.detail('Auto Git Update - Reading remote version from ' + url);
     // Send request for repositories raw package.json file
     try {
