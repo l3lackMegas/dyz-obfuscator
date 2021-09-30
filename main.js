@@ -162,7 +162,7 @@ const main = async () => {
 }
 
 let scriptPath = path.dirname(fileURLToPath(import.meta.url))
-let exeLine = `${scriptPath.substring(0, 1)} && cd ${scriptPath} && npm i --force && npm link --force`
+let exeLine = `${scriptPath.substring(0, 2)} && cd ${scriptPath} && npm i --force && npm link --force`
 
 //console.log(exeLine)
 
