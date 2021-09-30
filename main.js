@@ -150,6 +150,7 @@ const main = async () => {
 		log(`[!] Obfuscated files ${taskList.length} successfully!\n`)
 
 		console.log(`All Files has been created at ${path.join(cwd, destPath)}`)
+		process.exit();
 	} catch (error) {
 		console.log('Error creating obfuscate file.', error)
 	}
