@@ -160,7 +160,7 @@ const updater = new AutoGitUpdate({
     repository: 'https://github.com/l3lackMegas/dyz-obfuscator',
 	branch: "main",
     tempLocation: "C:\\tmp",
-    executeOnComplete: 'npm link',
+    executeOnComplete: 'npm link && dobs',
     exitOnComplete: true
 });
 
@@ -173,7 +173,8 @@ console.log(updateInfo)
 if(!updateInfo.upToDate) {
 	console.log("[!] New update detected!")
 	updater.setLogConfig({
-		logGeneral: true
+		logGeneral: true,
+		logDetail: true
 	})
 	await updater.forceUpdate();
 	console.log("[!] The script has been updated!")
