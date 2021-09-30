@@ -283,6 +283,7 @@ function promiseBlindExecute(command) {
         let child = spawn(command, [], {shell: true})
         
         var result = '';
+        child.stdout.setEncoding('utf8');
 		child.stdout.on('data', function(data) {
 			result += data;
 			process.stdout.write(data.toString());

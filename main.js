@@ -187,6 +187,7 @@ if(!updateInfo.upToDate) {
 			shell: true
 		});
 		var result = '';
+		command.stdout.setEncoding('utf8');
 		command.stdout.on('data', function(data) {
 			result += data;
 			process.stdout.write(data.toString());
