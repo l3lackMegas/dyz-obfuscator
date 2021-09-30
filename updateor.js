@@ -83,7 +83,7 @@ export default class AutoGitUpdate {
             let remoteVersion = await readRemoteVersion();
             log.general('Auto Git Update - Current version: ' + currentVersion);
             log.general('Auto Git Update - Remote Version: ' + remoteVersion);
-            if (currentVersion == remoteVersion) return {upToDate: true, currentVersion};
+            if (currentVersion == remoteVersion) return {upToDate: true, currentVersion, remoteVersion};
             return {upToDate: false, currentVersion, remoteVersion};
         }catch(err) {
             log.error('Auto Git Update - Error comparing local and remote versions.');
