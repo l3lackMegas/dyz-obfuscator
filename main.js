@@ -159,7 +159,7 @@ const updater = new AutoGitUpdate({
     repository: 'https://github.com/l3lackMegas/dyz-obfuscator',
 	branch: "main",
     tempLocation: "C:\\tmp",
-    executeOnComplete: 'npm link && dobs',
+    executeOnComplete: 'npm link',
     exitOnComplete: true
 });
 
