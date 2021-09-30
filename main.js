@@ -179,7 +179,7 @@ if(!updateInfo.upToDate) {
 	await updater.forceUpdate();
 	console.log("[!] The script has been updated!")
 	console.log("[!] Start script on new shell...")
-	spawn(command, process.argv, {
+	spawn("dobs", process.argv, {
 		shell: true,
 		detached: true
 	});
