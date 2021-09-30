@@ -20,7 +20,7 @@
  ```
  -V, --version         output the version number
  -s,--source [folder]  Source images directory (default: "./")
- -o,--outout [folder]  Directory to be created for obfuscated files (default: "./dyz-obfuscated")
+ -o,--output [folder]  Directory to be created for obfuscated files (default: "./dyz-obfuscated")
  -h, --help            display help for command
  ```
   
