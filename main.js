@@ -10,6 +10,8 @@ import {spawn, exec} from 'child_process';
 
 import AutoGitUpdate, { readAppVersion } from './updateor.js';
 
+
+const scriptPath = path.dirname(fileURLToPath(import.meta.url))
 const log = logUpdate.create(process.stdout, {
     showCursor: true
 });
@@ -161,7 +163,6 @@ const main = async () => {
 	}
 }
 
-let scriptPath = path.dirname(fileURLToPath(import.meta.url))
 let exeLine = `${scriptPath.substring(0, 2)} && cd ${scriptPath} && npm i --force && npm link --force`
 
 //console.log(exeLine)

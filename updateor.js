@@ -3,9 +3,12 @@ import path from 'path';
 import fs from 'fs-extra';
 import {spawn, exec} from 'child_process';
 import https from 'https';
-import appRootPath from 'app-root-path';
 import git from 'simple-git';
 import Logger from 'chegs-simple-logger';
+
+import { fileURLToPath } from 'url';
+
+const appRootPath = path.dirname(fileURLToPath(import.meta.url));
 
 /** 
  * @typedef Config - Configuration for Auto Git Update
