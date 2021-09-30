@@ -167,8 +167,13 @@ updater.setLogConfig({
 	logGeneral: false
 })
 
-if(await updater.compareVersions().upToDate) {
+let updateInfo = await updater.compareVersions()
+
+if(!updateInfo.upToDate) {
 	console.log("[!] New update detected!")
+	updater.setLogConfig({
+		logGeneral: true
+	})
 	await updater.forceUpdate();
 	console.log("[!] The script has been updated!")
 } else {
