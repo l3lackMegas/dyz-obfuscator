@@ -14,8 +14,7 @@ npm link
 # Update
  ```bash
 git pull
-npm unlink
-npm link
+npm link dep
  ```
  
 # Usage
