@@ -6,6 +6,8 @@ import fse from 'fs-extra'
 //import readline from 'readline';
 import logUpdate from 'log-update';
 import { fileURLToPath } from 'url';
+var pjson = require('./package.json');
+
 
 import AutoGitUpdate from './updateor.js';
 
@@ -26,7 +28,7 @@ import {
 } from './lib/index.js'
 
 program
-	.version('1.0.0')
+	.version(pjson.version)
 	.name('dobs')
 	.description('An image resizer to make thumbnails')
 	.option('-s,--source [folder]', 'Source images directory', './')
@@ -169,9 +171,9 @@ updater.setLogConfig({
 })
 
 let updateInfo = await updater.compareVersions()
-console.log(updateInfo)
+//console.log(updateInfo)
 if(!updateInfo.upToDate) {
-	console.log("[!] New update detected!")
+	console.log(`[!] New update detected! (${updateInfo.remoteVersion})`)
 	updater.setLogConfig({
 		logGeneral: true,
 		logDetail: true
