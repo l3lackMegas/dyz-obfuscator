@@ -6,7 +6,7 @@ import fse from 'fs-extra'
 //import readline from 'readline';
 import logUpdate from 'log-update';
 import { fileURLToPath } from 'url';
-var pjson = require('./package.json');
+import pjson from './package.json';
 
 
 import AutoGitUpdate from './updateor.js';
