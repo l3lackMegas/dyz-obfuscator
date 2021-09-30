@@ -181,9 +181,7 @@ if(!updateInfo.upToDate) {
 	process.on("exit", function () {
 		require("child_process").spawn(process.argv.shift(), process.argv, {
 			cwd: process.cwd(),
-			shell: true,
-			detached : true,
-			stdio: "inherit"
+			shell: true
 		});
 	});
 	process.exit();
