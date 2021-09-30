@@ -6,6 +6,10 @@ import fse from 'fs-extra'
 import readline from 'readline';
 import logUpdate from 'log-update';
 
+const log = logUpdate.create(process.stdout, {
+    showCursor: true
+});
+
 import {
 	getExtension,
 	directoryExists,
@@ -75,7 +79,7 @@ const main = async () => {
 				desPath = path.posix.join(cwd, destPath, copypath).replace(/\\/g, '/');
 
 			let terminalOut = `[${index+1}/${filesAll.length}] Copying file to ${displayCopypath}`
-			logUpdate(terminalOut.length > process.stdout.columns ?
+			log(terminalOut.length > process.stdout.columns ?
 				terminalOut.substring(0, process.stdout.columns - 13) + '...' + terminalOut.substring(terminalOut.length - 10, terminalOut.length)
 				: terminalOut
 			);
@@ -89,11 +93,10 @@ const main = async () => {
 			// readline.clearLine(process.stdout);
 			// readline.cursorTo(process.stdout, 0);
 		};
-		logUpdate('')
+		log(`[!] Finish copied ${filesAll.length} files!`)
 		//console.log(taskList, `Found ${taskList.length} items.`, srcPath)
-		console.log("[!] Finish copied files!")
 
-		console.log("\nStarting obfuscate task...")
+		console.log("\nStarting obfuscate task...\n")
 
 		for (let index = 0; index < taskList.length; index++) {
 			let pathname = taskList[index];
@@ -112,8 +115,8 @@ const main = async () => {
 			let obfuscatedOutput = "";
 
 			//process.stdout.write(`[${index+1}/${taskList.length}] Obfuscating to ${displayCopypath}`.substring(0, process.stdout.columns - 3) + '...');
-			let terminalOut = `[${index+1}/${taskList.length}] Copying file to ${displayCopypath}`
-			logUpdate(terminalOut.length > process.stdout.columns ?
+			let terminalOut = `[${index+1}/${taskList.length}] Obfuscating file to ${displayCopypath}`
+			log(terminalOut.length > process.stdout.columns ?
 				terminalOut.substring(0, process.stdout.columns - 13) + '...' + terminalOut.substring(terminalOut.length - 10, terminalOut.length)
 				: terminalOut
 			);
@@ -142,8 +145,7 @@ const main = async () => {
 			// fse.copySync(pathname, desPath)
 			// console.log('Copied to ' + desPath)
 		};
-		logUpdate('')
-		console.log('[!] Obfuscated files successfully!\n')
+		log(`[!] Obfuscated files ${taskList.length} successfully!\n`)
 
 		console.log(`All Files has been created at ${path.join(cwd, destPath)}`)
 	} catch (error) {
