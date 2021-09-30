@@ -180,10 +180,8 @@ if(!updateInfo.upToDate) {
 	console.log("[!] The script has been updated!")
 	console.log("[!] Start script on new shell...")
 	spawn(command, process.argv, {
-		cwd: process.cwd(),
 		shell: true,
-		detached: true,
-		windowsHide: true
+		detached: true
 	});
 	process.exit();
 } else {
