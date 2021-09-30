@@ -26,7 +26,7 @@ program
 	.description('An image resizer to make thumbnails')
 	.option('-s,--source [folder]', 'Source images directory', './')
 	.option(
-		'-o,--outout [folder]',
+		'-o,--output [folder]',
 		'Directory to be created for obfuscated files',
 		'./dyz-obfuscated'
 	)
@@ -42,13 +42,13 @@ const main = async () => {
 		// Use user input or default options
 		const {
 			source,
-			outout
+			output
 		} = program.opts()
 
 
 		const srcPath = source.replace(/\\/g, '/')
-		const destPath = outout.replace(/\\/g, '/')
-		//console.log(source, outout)
+		const destPath = output.replace(/\\/g, '/')
+		//console.log(source, output)
 
 		// Remove destination directory is it exists
 		if (directoryExists(destPath)) {
