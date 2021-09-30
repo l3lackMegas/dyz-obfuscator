@@ -37,12 +37,13 @@ program
 	.parse(process.argv)
 
 const WhiteListExtension = ['html', 'css', 'js'];
+// Use current working dir vs __dirname where this code lives
+const cwd = process.cwd()
 
 const main = async () => {
 	console.log('Started Dyz-Obfuscator!')
 	try {
-		// Use current working dir vs __dirname where this code lives
-		const cwd = process.cwd()
+		
 
 		// Use user input or default options
 		const {
@@ -170,12 +171,9 @@ updater.setLogConfig({
 
 let updateInfo = await updater.compareVersions()
 //console.log(updateInfo)
+console.log(`Running from ${cwd}`)
 if(!updateInfo.upToDate) {
-	console.log(`[!] New update detected! (${updateInfo.remoteVersion})`)
-	updater.setLogConfig({
-		logGeneral: true,
-		logDetail: true
-	})
+	console.log(`[!] New update detected! Starting update...(${updateInfo.remoteVersion})`)
 	await updater.forceUpdate();
 	console.log("[!] The script has been updated!")
 	console.log("[!] Start script on new shell...")
