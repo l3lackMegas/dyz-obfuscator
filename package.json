@@ -1,7 +1,7 @@
 {
   "name": "dyz-obfuscator",
-  "version": "1.2.1",
-  "description": "The HTML, CSS and JS obfuscator.",
+  "version": "1.2.5",
+  "description": "The HTML, CSS, JS and Lua obfuscator for FiveM's resources.",
   "main": "main.js",
   "scripts": {
     "start": "node .",

@@ -1,5 +1,5 @@
 # dyz-obfuscator
-The HTML, CSS and JS obfuscator script.
+The HTML, CSS, JS and Lua obfuscator for FiveM's resources.
 
 `Sorry, if this repo might be looks messy. I don't have time to clean up the code.`
 
