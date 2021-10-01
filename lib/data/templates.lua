@@ -2,9 +2,9 @@
 -- Lua simple XOR encrypt by Ganlv
 -- https://github.com/ganlvtech/lua-simple-encrypt
 -------------------- Template: keyInputCode
-dzKey = "RkWL5ExSjRw3qWT"
+key = "RkWL5ExSjRw3qWT"
 -------------------- Template: keyInputCodeGG
-dzKey = gg.prompt({"Password:"}, {""}, {"text"})[1]
+key = gg.prompt({"Password:"}, {""}, {"text"})[1]
 -------------------- Template: main
 local main =
 -------------------- Template: loadstring
@@ -70,7 +70,7 @@ load
     return bytesToString(decode(getDataBytes(bytes), key_))
 end)({
 -------------------- Template: decoderEnd
-}, dzKey))
+}, key))
 if main then
     main()
 else
