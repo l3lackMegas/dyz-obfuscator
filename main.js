@@ -152,7 +152,7 @@ const main = async () => {
 			// readline.clearLine(process.stdout);
 			// readline.cursorTo(process.stdout, 0);
 		};
-		log(`[!] Finish copied ${filesAll.length} files!`)
+		log(`[!] Finish copied with ${filesAll.length} files!`)
 		//console.log(taskList, `Found ${taskList.length} items.`, srcPath)
 
 		console.log("\nStarting obfuscate task...\n")
