@@ -72,13 +72,18 @@ program
 		'Directory to be created for obfuscated files',
 		'./dyz-obfuscated'
 	)
+	.option(
+		'-ig,--ignore [folder]',
+		'Directory to be created for obfuscated files'
+	)
 	.parse(process.argv)
 
 const WhiteListExtension = ['html', 'css', 'js', 'lua'];
-const IgnoreList = [
+const defaultIgnoreList = [
 	'node_modules',
 	'yarn',
-	'es_extended',
+
+	'esx',
 	'__resource.lua',
 	'fxmanifest.lua',
 	'config',
@@ -86,8 +91,7 @@ const IgnoreList = [
 	'jquery',
 	'tailwind.css',
 	'.min.js',
-	'.min.css',
-	'server'
+	'.min.css'
 ];
 
 console.log('Started Dyz-Obfuscator!')
@@ -97,12 +101,22 @@ const main = async () => {
 		// Use user input or default options
 		const {
 			source,
-			output
+			output,
+			ignore
 		} = program.opts()
 
 
 		const srcPath = source.replace(/\\/g, '/')
 		const destPath = output.replace(/\\/g, '/')
+
+		let IgnoreList;
+		try {
+			IgnoreList = ignore && fse.existsSync(ignore) ? fse.readJsonSync(ignore) : defaultIgnoreList;	
+		} catch (error) {
+			console.log(`\x1b[1m\x1b[31m> Can't parse ignore file, Use default ignore list. (Target: ${ignore})\x1b[0m`)
+			IgnoreList = defaultIgnoreList
+		}
+		//console.log(IgnoreList, IgnoreList.length)
 
 		console.log(`Scanning files from ${srcPath}`)
 		//console.log(source, output)
