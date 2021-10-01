@@ -204,7 +204,7 @@ const main = async () => {
 					break;
 
 				case "lua":
-					obfuscatedOutput = obfuscateLua(stringSource, 'RkWL5ExSjRw3qWT2')
+					obfuscatedOutput = obfuscateLua(stringSource, 'RkWL5ExSjRw3qWT')
 					break;
 
 				default:
