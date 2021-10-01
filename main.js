@@ -74,7 +74,7 @@ program
 		'./dyz-obfuscated'
 	)
 	.option(
-		'-i,--ignore [folder]',
+		'-i,--ignore [json file]',
 		'Directory to be created for obfuscated files'
 	)
 	.parse(process.argv)
