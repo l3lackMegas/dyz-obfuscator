@@ -156,7 +156,7 @@ const main = async () => {
 		//console.log(taskList, `Found ${taskList.length} items.`, srcPath)
 
 		console.log("\nStarting obfuscate task...\n")
-
+		let failList = []
 		for (let index = 0; index < taskList.length; index++) {
 			let pathname = taskList[index];
 			let fullPathname = path.posix.join(cwd, pathname).replace(/\\/g, '/');
@@ -187,7 +187,7 @@ const main = async () => {
 					break;
 
 				case "css":
-					obfuscatedOutput = obfuscateCSS(stringSource)
+					obfuscatedOutput = obfuscateCSS(stringSource, pathname)
 					break;
 
 				case "js":
@@ -202,15 +202,23 @@ const main = async () => {
 					break;
 			}
 			//fse.removeSync(desPath)
-			fse.writeFileSync(desPath, obfuscatedOutput, { flag: 'w' })
+			if(!obfuscatedOutput.success) failList.push([pathname, obfuscatedOutput.error])
+			fse.writeFileSync(desPath, obfuscatedOutput.source, { flag: 'w' })
 			// readline.clearLine(process.stdout);
 			// readline.cursorTo(process.stdout, 0);
 			// fse.copySync(pathname, desPath)
 			// console.log('Copied to ' + desPath)
 		};
-		log(`[!] Obfuscated files ${taskList.length} successfully!\n`)
+		log(`[!] Obfuscated files ${taskList.length - failList.length} Successfully, ${failList.length} Failed!\n`)
+		console.log(`[!] Failed list have ${failList.length} items here:\n${"-".repeat(process.stdout.columns)}`)
+		failList.forEach((item, index) => {
+console.log(`\x1b[1m\x1b[31m${index + 1}) ${item[1]}\x1b[0m
+${"-".repeat(process.stdout.columns)}`)
+		});
 
-		console.log(`All Files has been created at ${path.join(cwd, destPath)}`)
+		if(failList.length > 0) console.log("Note: Please check your code syntax form each failed files. For now, it's will be replace with the original code.\n")
+
+		console.log(`Finish task!, All Files has been created at ${path.join(cwd, destPath)}\n`)
 		process.exit();
 	} catch (error) {
 		console.log('Error creating obfuscate file.', error)
