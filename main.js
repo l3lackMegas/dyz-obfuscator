@@ -76,6 +76,8 @@ program
 
 const WhiteListExtension = ['html', 'css', 'js', 'lua'];
 const IgnoreList = [
+	'node_modules',
+	'yarn',
 	'es_extended',
 	'__resource.lua',
 	'fxmanifest.lua',
