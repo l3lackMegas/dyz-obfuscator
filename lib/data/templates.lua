@@ -2,7 +2,7 @@
 -- Lua simple XOR encrypt by Ganlv
 -- https://github.com/ganlvtech/lua-simple-encrypt
 -------------------- Template: keyInputCode
-dzKey = "RkWL5ExSjRw3qWT2"
+dzKey = "RkWL5ExSjRw3qWT"
 -------------------- Template: keyInputCodeGG
 dzKey = gg.prompt({"Password:"}, {""}, {"text"})[1]
 -------------------- Template: main
