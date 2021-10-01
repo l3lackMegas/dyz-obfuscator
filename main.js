@@ -81,17 +81,7 @@ program
 const WhiteListExtension = ['html', 'css', 'js', 'lua'];
 const defaultIgnoreList = [
 	'node_modules',
-	'yarn',
-
-	'esx',
-	'__resource.lua',
-	'fxmanifest.lua',
-	'config',
-	'/src/',
-	'jquery',
-	'tailwind.css',
-	'.min.js',
-	'.min.css'
+	'yarn'
 ];
 
 console.log('Started Dyz-Obfuscator!')
