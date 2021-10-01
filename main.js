@@ -75,11 +75,14 @@ program
 	.parse(process.argv)
 
 const WhiteListExtension = ['html', 'css', 'js', 'lua'];
-const IgnoreListExtension = [
+const IgnoreList = [
 	'es_extended',
 	'__resource.lua',
 	'fxmanifest.lua',
-	'config'
+	'config',
+	'/src/',
+	'jquery',
+	'tailwind.css'
 ];
 
 console.log('Started Dyz-Obfuscator!')
@@ -134,12 +137,13 @@ const main = async () => {
 			if(
 				WhiteListExtension.includes(getExtension(pathname)) &&
 				(()=>{
-					let isNonIgnore = true;
-					IgnoreListExtension.forEach(ignoreWord => {
-						isNonIgnore = !pathname.toLocaleLowerCase().includes(ignoreWord.toLocaleLowerCase())
+					let isNonIgnore = 0;
+					IgnoreList.forEach(ignoreWord => {
+						let isFound = pathname.toLocaleLowerCase().includes(ignoreWord.toLocaleLowerCase())
+						isNonIgnore = isFound ? isNonIgnore + 1 : isNonIgnore
 					});
-					return isNonIgnore;
-				})
+					return isNonIgnore === 0;
+				})()
 			) taskList.push(pathname);
 			//console.log(desPath)
 
