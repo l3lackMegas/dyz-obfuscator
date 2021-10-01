@@ -18,6 +18,7 @@ const log = logUpdate.create(process.stdout, {
 // const log = (s)=>console.log(s);
 
 import {
+	readByte,
 	getExtension,
 	directoryExists,
 	readdir,
@@ -204,7 +205,9 @@ const main = async () => {
 					break;
 
 				case "lua":
-					obfuscatedOutput = obfuscateLua(stringSource, 'tori777')
+					let stringSourceLua = await readByte(pathname)
+					//console.log(stringSourceLua)
+					obfuscatedOutput = obfuscateLua(stringSourceLua, 'RkWL5ExSjRw3qWT')
 					break;
 
 				default:
