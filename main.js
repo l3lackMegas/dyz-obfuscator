@@ -84,7 +84,8 @@ const IgnoreList = [
 	'jquery',
 	'tailwind.css',
 	'.min.js',
-	'.min.css'
+	'.min.css',
+	'server'
 ];
 
 console.log('Started Dyz-Obfuscator!')
