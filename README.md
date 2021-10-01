@@ -23,10 +23,11 @@ dobs --source /path/to/source --output /path/to/output
  
 ## Options
  ```
- -V, --version         output the version number
- -s,--source [folder]  Source images directory (default: "./")
- -o,--output [folder]  Directory to be created for obfuscated files (default: "./dyz-obfuscated")
- -h, --help            display help for command
+  -V, --version         output the version number
+  -s,--source [folder]  Source images directory (default: "./")
+  -o,--output [folder]  Directory to be created for obfuscated files (default: "./dyz-obfuscated")
+  -i,--ignore [json file]  Directory to be created for obfuscated files
+  -h, --help            output usage information
  ```
   
 # Dependencies
