@@ -6,7 +6,6 @@ import fse from 'fs-extra'
 //import readline from 'readline';
 import logUpdate from 'log-update';
 import { fileURLToPath } from 'url';
-import {spawn, exec} from 'child_process';
 
 import AutoGitUpdate, { readAppVersion } from './updateor.js';
 
@@ -30,6 +29,39 @@ import {
 	obfuscateLua
 } from './lib/index.js'
 
+// Use current working dir vs __dirname where this code lives
+const cwd = process.cwd()
+
+let exeLine = `${scriptPath.substring(0, 2)} && cd ${scriptPath} && npm i --force && npm link --force`
+
+//console.log(exeLine)
+
+const updater = new AutoGitUpdate({
+    repository: 'https://github.com/l3lackMegas/dyz-obfuscator',
+	branch: "main",
+    tempLocation: "C:\\tmp",
+    executeOnComplete: exeLine,
+    exitOnComplete: false
+});
+
+updater.setLogConfig({
+	logGeneral: false
+})
+
+let updateInfo = await updater.compareVersions()
+console.log(`- Running from ${cwd}`)
+console.log(`- Current version: ${updateInfo.currentVersion}, Remote version: ${updateInfo.remoteVersion}`)
+if(!updateInfo.upToDate) {
+	console.log(`
+[!] New version detected! (${updateInfo.remoteVersion})
+	==========================================================
+	|                  To update the script.                 |
+	|                                                        |
+	|                 npm i -g dyz-obfuscator                |
+	==========================================================
+	`)
+}
+
 program
 	.version(readAppVersion())
 	.name('dobs')
@@ -49,8 +81,7 @@ const IgnoreListExtension = [
 	'fxmanifest.lua',
 	'config'
 ];
-// Use current working dir vs __dirname where this code lives
-const cwd = process.cwd()
+
 console.log('Started Dyz-Obfuscator!')
 const main = async () => {
 	try {
@@ -180,36 +211,6 @@ const main = async () => {
 	} catch (error) {
 		console.log('Error creating obfuscate file.', error)
 	}
-}
-
-let exeLine = `${scriptPath.substring(0, 2)} && cd ${scriptPath} && npm i --force && npm link --force`
-
-//console.log(exeLine)
-
-const updater = new AutoGitUpdate({
-    repository: 'https://github.com/l3lackMegas/dyz-obfuscator',
-	branch: "main",
-    tempLocation: "C:\\tmp",
-    executeOnComplete: exeLine,
-    exitOnComplete: false
-});
-
-updater.setLogConfig({
-	logGeneral: false
-})
-
-let updateInfo = await updater.compareVersions()
-console.log(`- Running from ${cwd}`)
-console.log(`- Current version: ${updateInfo.currentVersion}, Remote version: ${updateInfo.remoteVersion}`)
-if(!updateInfo.upToDate) {
-	console.log(`
-[!] New version detected! (${updateInfo.remoteVersion})
-	==========================================================
-	|                  To update the script.                 |
-	|                                                        |
-	|                 npm i -g dyz-obfuscator                |
-	==========================================================
-	`)
 }
 
 main();
