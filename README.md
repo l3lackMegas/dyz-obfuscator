@@ -45,5 +45,4 @@ dobs --source /path/to/source --output /path/to/output
 - "simple-git": "^1.131.0"
 - "utf8": "^3.0.0"
 
-Thank to [chegele/AutoGitUpdate](https://github.com/chegele/AutoGitUpdate) for check version script !
-Thank to [ganlvtech/lua-simple-encrypt](https://github.com/ganlvtech/lua-simple-encrypt) for lua encryption !
+Thank to [chegele/AutoGitUpdate](https://github.com/chegele/AutoGitUpdate) for check version script, And Thank to [ganlvtech/lua-simple-encrypt](https://github.com/ganlvtech/lua-simple-encrypt) for lua encryption !
