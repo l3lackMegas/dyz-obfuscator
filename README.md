@@ -14,11 +14,25 @@ dobs [option]
 ```
  
 ## Example:
+- Easy way to use:
+```bash
+dobs
+```
+- Wanna set a source and output folder? Check this:
 ```bash
 dobs -s "/path/to/source" -o "/path/to/output"
-```
-```bash
+
+#or
+
 dobs --source /path/to/source --output /path/to/output
+```
+- Ignore some file by keywords? Use this option and see example of json file [here](https://github.com/l3lackMegas/dyz-obfuscator/blob/main/ignore-list.json).
+```bash
+dobs -i /path/to/ignore-list.json
+
+#or
+
+dobs -ignore /path/to/ignore-list.json
 ```
  
 ## Options
