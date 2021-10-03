@@ -135,9 +135,9 @@ const main = async () => {
 			let sPath = path.posix.join(cwd, srcPath).replace(/\\/g, '/')
 			let copypath = fullPathname.replace(sPath, ""),
 				displayCopypath = path.posix.join(destPath, copypath).replace(/\\/g, '/'),
-				desPath = path.posix.join(cwd, destPath, copypath).replace(/\\/g, '/');
+				desPath = path.posix.join(destPath, copypath).replace(/\\/g, '/');
 
-			let terminalOut = `[${index+1}/${filesAll.length}] Copying file to ${displayCopypath}`
+			let terminalOut = `[${index+1}/${filesAll.length}] Copying file to ${desPath}`
 			log(terminalOut.length > process.stdout.columns ?
 				terminalOut.substring(0, process.stdout.columns - 13) + '...' + terminalOut.substring(terminalOut.length - 10, terminalOut.length)
 				: terminalOut
@@ -157,7 +157,7 @@ const main = async () => {
 			) taskList.push(pathname);
 			//console.log(desPath)
 
-			fse.copySync(pathname, desPath)
+			fse.copySync(pathname, displayCopypath)
 			//console.log('Copied to ' + desPath)
 			// readline.clearLine(process.stdout);
 			// readline.cursorTo(process.stdout, 0);
@@ -184,7 +184,7 @@ const main = async () => {
 			let obfuscatedOutput = "";
 
 			//process.stdout.write(`[${index+1}/${taskList.length}] Obfuscating to ${displayCopypath}`.substring(0, process.stdout.columns - 3) + '...');
-			let terminalOut = `[${index+1}/${taskList.length}] Obfuscating file to ${displayCopypath}`
+			let terminalOut = `[${index+1}/${taskList.length}] Obfuscating file to ${desPath}`
 			log(terminalOut.length > process.stdout.columns ?
 				terminalOut.substring(0, process.stdout.columns - 13) + '...' + terminalOut.substring(terminalOut.length - 10, terminalOut.length)
 				: terminalOut
@@ -215,7 +215,7 @@ const main = async () => {
 			}
 			//fse.removeSync(desPath)
 			if(!obfuscatedOutput.success) failList.push([pathname, obfuscatedOutput.error])
-			fse.writeFileSync(desPath, obfuscatedOutput.source, { flag: 'w' })
+			fse.writeFileSync(displayCopypath, obfuscatedOutput.source, { flag: 'w' })
 			// readline.clearLine(process.stdout);
 			// readline.cursorTo(process.stdout, 0);
 			// fse.copySync(pathname, desPath)
