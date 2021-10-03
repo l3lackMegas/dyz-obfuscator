@@ -195,19 +195,19 @@ const main = async () => {
 
 			switch (getExtension(pathname).toLowerCase()) {
 				case "html":
-					obfuscatedOutput = obfuscateHTML(stringSource)
+					obfuscatedOutput = obfuscateHTML(stringSource, log, terminalOut)
 					break;
 
 				case "css":
-					obfuscatedOutput = obfuscateCSS(stringSource, pathname)
+					obfuscatedOutput = obfuscateCSS(stringSource, pathname, log, terminalOut)
 					break;
 
 				case "js":
-					obfuscatedOutput = obfuscateJS(stringSource)
+					obfuscatedOutput = obfuscateJS(stringSource, log, terminalOut)
 					break;
 
 				case "lua":
-					let stringSourceLua = await readByte(pathname)
+					let stringSourceLua = await readByte(pathname, log, terminalOut)
 					//console.log(stringSourceLua)
 					obfuscatedOutput = obfuscateLua(stringSourceLua, 'RkWL5ExSjRw3qWT')
 					break;
