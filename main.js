@@ -75,7 +75,7 @@ program
 	)
 	.option(
 		'-i,--ignore [json file]',
-		'Directory to be created for obfuscated files'
+		'JSON file that contain keywords to skip obfuscation.'
 	)
 	.parse(process.argv)
 

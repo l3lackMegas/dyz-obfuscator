@@ -40,7 +40,7 @@ dobs -ignore /path/to/ignore-list.json
   -V, --version         output the version number
   -s,--source [folder]  Source images directory (default: "./")
   -o,--output [folder]  Directory to be created for obfuscated files (default: "./dyz-obfuscated")
-  -i,--ignore [json file]  Directory to be created for obfuscated files
+  -i,--ignore [json file]  JSON file that contain keywords to skip obfuscation
   -h, --help            output usage information
  ```
   
