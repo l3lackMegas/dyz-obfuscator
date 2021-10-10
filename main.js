@@ -66,7 +66,7 @@ if(!updateInfo.upToDate) {
 program
 	.version(readAppVersion())
 	.name('dobs')
-	.description('An image resizer to make thumbnails')
+	.description("The HTML, CSS, JS and Lua obfuscator for FiveM's resources")
 	.option('-s,--source [folder]', 'Source images directory', './')
 	.option(
 		'-o,--output [folder]',
