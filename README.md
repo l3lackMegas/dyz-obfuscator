@@ -1,7 +1,10 @@
 # dyz-obfuscator
 The HTML, CSS, JS and Lua obfuscator for FiveM's resources.
 
+
 `Sorry, if this repo might be looks messy. I don't have time to clean up the code.`
+
+`This is not an encryption. It's just a code obfuscate script.`
 
 # Installation & Update
 ```bash
